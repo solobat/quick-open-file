@@ -15,9 +15,11 @@ export function getCurrentWord() : string {
     let window = vscode.window;
     let editor = window.activeTextEditor;
     let document = editor.document;
+    let startColumn = editor.selection.start.character;
+    let lineText = document.lineAt(editor.selection.start.line).text;
+    let pathMatch = lineText.match(/'([^']+)'/g).slice(-1)[0].replace(/'/g, '');
 
-    let wordRange = document.getWordRangeAtPosition(editor.selection.start);
-    return document.getText(wordRange);
+    return pathMatch.split('/').slice(-1)[0].split('.')[0];
 }
 
 export function getFileName(path : string) : string {

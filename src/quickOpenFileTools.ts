@@ -23,7 +23,7 @@ export default class QuickOpenFileTools {
     }
 
     private updateOption() {
-        let configuration       = vscode.workspace.getConfiguration('quickOpenFile');
+        let configuration       = vscode.workspace.getConfiguration('vscodeQuickOpenFile');
         this.extensionInclude   = <string[]>configuration.get('extensionInclude');
         this.folderExclude      = <string[]>configuration.get('folderExclude');
         this.suffixList         = <string[]>configuration.get('suffixList');

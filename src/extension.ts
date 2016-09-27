@@ -6,11 +6,11 @@ import PeekFileDefinitionProvider from './peekFileDefinitionProvider';
 
 export function activate(context: vscode.ExtensionContext) {
     let tools = new QuickOpenFileTools();
-    let quickOpenFile = vscode.commands.registerCommand('extension.quickOpenFile', () => {
+    let quickOpenFile = vscode.commands.registerCommand('extension.vscodeQuickOpenFile', () => {
         tools.findFiles();
     });
 
-    let peekLanguages = <string[]>vscode.workspace.getConfiguration('quickOpenFile').get('peekLanguages');
+    let peekLanguages = <string[]>vscode.workspace.getConfiguration('vscodeQuickOpenFile').get('peekLanguages');
     const peek_filter: vscode.DocumentFilter[] = peekLanguages.map((language) => {
         return {
             language: language,
